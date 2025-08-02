@@ -35,7 +35,7 @@ Follow these steps to run the project locally:
 ### 1\. Clone the Repository
 
 ```bash
-git clone https://github.com/EkiZR/Portofolio_V5.git
+git clone https://github.com/Afvanie/Portofolio_V5.git
 cd Portofolio_V5
 ```
 
@@ -177,7 +177,7 @@ VALUES ('REPLACE_WITH_YOUR_CERTIFICATE_IMAGE_URL.png');
 
 -- Insert one example comment
 INSERT INTO public.portfolio_comments (content, user_name) 
-VALUES ('Created By Eki Zulfar Rachman', 'ekizr');
+VALUES ('Created By Eki Zulfar Rachman', 'Afvanie');
 
 ```
 
@@ -240,7 +240,7 @@ If you have any questions or need help with the setup, feel free to reach out\!
 **Eki Zulfar Rachman**
 
   - Website: [https://www.eki.my.id/](https://www.eki.my.id/)
-  - GitHub: [EkiZR](https://github.com/EkiZR)
+  - GitHub: [Afvanie](https://github.com/Afvanie)
 
 -----
 
