@@ -1,0 +1,46 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Public Site — Supabase Dynamic</title>
+  </head>
+  <body>
+    <h2>Projects</h2>
+    <div id="projects"></div>
+    <h2>Certificates</h2>
+    <div id="certificates"></div>
+    <h2>Experiences</h2>
+    <ul id="experiences"></ul>
+
+    <script type="module">
+      import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+      const supabase = createClient('YOUR_URL', 'YOUR_ANON_KEY')
+
+      async function renderProjects(){
+        const { data } = await supabase.from('projects').select('*').order('id', {ascending:false})
+        const el = document.querySelector('#projects')
+        el.innerHTML = data.map(p => `
+          <div class="project">
+            ${p.img ? `<img src="${p.img}" alt="" width="200"/>` : ''}
+            <h3>${p.title}</h3>
+            <p>${p.description||''}</p>
+            <div>
+              ${p.link ? `<a href="${p.link}" target="_blank">Live</a>` : ''}
+              ${p.github ? `<a href="${p.github}" target="_blank">GitHub</a>` : ''}
+            </div>
+          </div>
+        `).join('')
+      }
+      async function renderCertificates(){
+        const { data } = await supabase.from('certificates').select('*').order('id', {ascending:false})
+        document.querySelector('#certificates').innerHTML = data.map(c => `<img src="${c.img}" width="160"/>`).join('')
+      }
+      async function renderExperiences(){
+        const { data } = await supabase.from('experiences').select('*').order('year', {ascending:false})
+        document.querySelector('#experiences').innerHTML = data.map(e => `<li><strong>${e.year}</strong> — ${e.description||''}</li>`).join('')
+      }
+      renderProjects(); renderCertificates(); renderExperiences();
+    </script>
+  </body>
+</html>
